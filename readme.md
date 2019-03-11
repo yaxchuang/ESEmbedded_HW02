@@ -55,3 +55,36 @@ This is the hw02 sample. Please follow the steps below.
 --------------------
 
 Please take your note here.
+
+1.先將資料夾 gnu-mcu-eclipse-qemu 複製到 ESEmbedded_HW02 資料夾中
+2.設計測試程式 main.s ，從 _start 開始後依序執行 push 以及 pop 並且觀察其指令差異， 目標比較 18 行的 push {r0, r1, r2} 以及 20 行的 push {r2, r0, r1} 執行時的變化。
+***
+_start:
+	nop
+        
+        //mov
+        mov r0, #100
+        mov r1, #0x11000000
+        mov r2, #102
+        mov r3, #103
+
+        //push
+	push {r0, r1, r2}
+        pop  {r2}
+        push {r2, r0, r1}
+        pop  {r0}
+  
+label01:
+	nop
+
+	//
+	//branch w/ link
+	//
+	bl	sleep
+
+sleep:
+	nop
+	b	.
+***
+3.
+
