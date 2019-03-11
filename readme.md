@@ -58,7 +58,7 @@ Please take your note here.
 
 1.先將資料夾 gnu-mcu-eclipse-qemu 複製到 ESEmbedded_HW02 資料夾中
 2.設計測試程式 main.s ，從 _start 開始後依序執行 push 以及 pop 並且觀察其指令差異， 目標比較 18 行的 push {r0, r1, r2} 以及 20 行的 push {r2, r0, r1} 執行時的變化。
-***
+*
 _start:
 	nop
         
@@ -85,6 +85,6 @@ label01:
 sleep:
 	nop
 	b	.
-***
+*
 3.
 
