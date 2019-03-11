@@ -89,6 +89,18 @@ sleep:
 	nop
 	b	.
 ```
-3. 將 main.s 編譯並以 qemu 模擬， 先$ make clean, 再$ make, $ make qemu 完開啟另一 Terminal 連線 $ arm-none-eabi-gdb ，再輸入 target remote 127.0.0.1:1234 連接，輸入兩次的 ctrl + x 再輸入 2或是輸入layout regs, 開啟 Register 以及指令，並且輸入display $sp接著再輸入 si 單步執行觀察。 當執行完 push {r0, r1, r2} 時， pc 跳轉從 0x1a 至 0x1c 且 sp 從 0x20000100 至 0x200000f4。
+3. 將 main.s 編譯並以 qemu 模擬， 先`$ make clean`, 再`$ make`, `$ make qemu` 完開啟另一 Terminal 連線 `$ arm-none-eabi-gdb` ，再輸入 `target remote 127.0.0.1:1234` 連接，輸入兩次的 ctrl + x 再輸入 2或是輸入`layout regs`, 開啟 Register 以及指令，並且輸入`display $sp`接著再輸入 `si` 單步執行觀察。 當執行完 `push {r0, r1, r2}`時， pc 跳轉從 0x1a 至 0x1c 且 sp 從 `0x20000100` 至 `0x200000f4`。
 ![](https://github.com/yaxchuang/ESEmbedded_HW02/blob/master/img/push{r0,r1,r2}.png)
+
+當執行到`pop{r2}`時，pc 跳轉從 0x1c 至 0x1e 且 sp 從 `0x200000f4` 至 `0x200000f8`。
+![](https://github.com/yaxchuang/ESEmbedded_HW02/blob/master/img/pop{r2}.png)
+
+
+當執行到`push{r2, r0, r1}`時，此時gdb顯示成`push {r0, r1, r2}`，代表前兩者表示是相同會依照數字大小排序。而 pc 跳轉從 0x1e 至 0x20 且 sp 從 `0x200000f8` 至 `0x200000ec`。
+![](https://github.com/yaxchuang/ESEmbedded_HW02/blob/master/img/push{r2,r0,r1}.png)
+
+
+當執行到`pop{r0}`時，pc 跳轉從 0x20 至 0x22 且 sp 從 `0x200000ec` 至 `0x200000f0`。
+![](https://github.com/yaxchuang/ESEmbedded_HW02/blob/master/img/pop{r0}.png)
+
 
