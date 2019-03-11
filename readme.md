@@ -104,8 +104,9 @@ sleep:
 4. 結果與討論
 
 (1)For example, will push {r0, r1, r2} and push {r2, r0, r1} act in the same way?Ans:兩者都會先將數字小的r0放入stack，再依序將r1,r2放入。
+
 (2)push一個register，會使sp減少4bytes;反之pop一個register，會使sp增加4bytes。
-如push {r0, r1, r2}，sp從`0x20000100=>256` 至 `0x200000f4=>244`(即減少12bytes)
-如pop  {r2}，sp從`0x200000f4=>244` 至 `0x200000f8=>248`(即增加4bytes)
+如push {r0, r1, r2}，sp從`0x20000100=>256` 至 `0x200000f4=>244`(即減少12bytes)。
+如pop  {r2}，sp從`0x200000f4=>244` 至 `0x200000f8=>248`(即增加4bytes)。
 
 
