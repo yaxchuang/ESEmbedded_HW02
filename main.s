@@ -7,12 +7,19 @@
 .type _start, %function
 _start:
 	nop
+        
+        //mov
+        mov r0, #100
+        mov r1, #0x11000000
+        mov r2, #102
+        mov r3, #103
 
-	//
-	//branch w/o link
-	//
-	b	label01
-
+        //push
+	push {r0, r1, r2}
+        pop  {r2}
+        push {r2, r0, r1}
+        pop  {r0}
+  
 label01:
 	nop
 
