@@ -96,11 +96,17 @@ sleep:
 ![](https://github.com/yaxchuang/ESEmbedded_HW02/blob/master/img/pop{r2}.png)
 
 
-當執行到`push{r2, r0, r1}`時，此時gdb顯示成`push {r0, r1, r2}`，代表前兩者表示是相同會依照數字大小排序。而 pc 跳轉從 0x1e 至 0x20 且 sp 從 `0x200000f8` 至 `0x200000ec`。
+當執行到main.s中第20行的`push{r2, r0, r1}`時，此時gdb顯示為`push {r0, r1, r2}`，代表前兩者表示是相同會依照數字大小排序。而 pc 跳轉從 0x1e 至 0x20 且 sp 從 `0x200000f8` 至 `0x200000ec`。
 ![](https://github.com/yaxchuang/ESEmbedded_HW02/blob/master/img/push{r2,r0,r1}.png)
 
 
 當執行到`pop{r0}`時，pc 跳轉從 0x20 至 0x22 且 sp 從 `0x200000ec` 至 `0x200000f0`。
 ![](https://github.com/yaxchuang/ESEmbedded_HW02/blob/master/img/pop{r0}.png)
+
+4. 結果與討論
+(1)For example, will push {r0, r1, r2} and push {r2, r0, r1} act in the same way?Ans:兩者都會先將數字小的r0放入stack，再依序將r1,r2放入。
+(2)push一個register，會使sp減少4bytes;反之pop一個register，會使sp增加4bytes。
+如push {r0, r1, r2}，sp從`0x20000100=>256` 至 `0x200000f4=>244`(即減少12bytes)
+如pop  {r2}，sp從`0x200000f4=>244` 至 `0x200000f8=>248`(即增加4bytes)
 
 
